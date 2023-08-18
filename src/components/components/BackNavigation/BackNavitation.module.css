@@ -1,0 +1,8 @@
+.back__navigation__wrapper {
+    position: fixed;
+    top: 1rem;
+    left: 1.3rem;
+    color: #fff;
+    font-size: 3rem;
+    text-transform: uppercase;
+}

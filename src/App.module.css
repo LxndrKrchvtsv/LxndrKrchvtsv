@@ -1,3 +1,88 @@
+@font-face {
+    font-family: "jetBrains-extra-bold";
+    src: url("./assets/fonts/JetBrainsMono/fonts/webfonts/JetBrainsMono-ExtraBold.woff2");
+    font-weight: bold;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "jetBrains-extra-light";
+    src: url("./assets/fonts/JetBrainsMono/fonts/webfonts/JetBrainsMono-ExtraLight.woff2");
+    font-weight: 100;
+    font-display: swap;
+}
+
+:root {
+    --background-rgb: 0 47 0;
+
+    --green-rgb: 0 142 0;
+    --primary-rgb: var(--green-rgb);
+}
+
+body, html {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    cursor: none;
+    background-color: #000;
+    min-height: 100vh;
+}
+
+body::-webkit-scrollbar{
+    display: none;
+}
+
 body {
-    background-color: aquamarine;
+    scrollbar-width: none;
+}
+
+h1, h2, h3, h4, h5, h6, p, span {
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: jetBrains-extra-bold, monospace, sans-serif;
+}
+
+div, p, span {
+    font-family: jetBrains-extra-light, monospace, sans-serif;;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+.cursor {
+    pointer-events: none;
+    position: fixed;
+    padding: 0.8rem;
+    background-color: #58447a91;
+    border-radius: 50%;
+    mix-blend-mode: difference;
+    transition: transform 0.3s ease;
+}
+
+.blob {
+    height: 400px;
+    width: 400px;
+    aspect-ratio: 0.3;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    border-radius: 50%;
+    background: linear-gradient( to left, #b5a7ff66, #1e194969);
+    animation: rotate 50s infinite;
+    filter: blur(100px);
+    pointer-events: none;
+}
+
+@keyframes rotate {
+    from {
+        rotate: 0deg;
+    }
+
+    to {
+        rotate: 360deg;
+    }
 }

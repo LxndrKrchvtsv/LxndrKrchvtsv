@@ -1,0 +1,15 @@
+.greeting__wrapper {
+    color: #fff;
+    overflow: hidden;
+    line-height: 112px;
+}
+
+h1 {
+    /*color: #7f6c3f #27489c;*/
+    opacity: 0;
+    font-size: 88px;
+    width: fit-content;
+    position: relative;
+    padding-left: 30px;
+    text-transform: uppercase;
+}

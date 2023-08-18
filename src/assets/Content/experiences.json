@@ -1,0 +1,81 @@
+[
+	{
+		"position": "Front-end Developer",
+		"company": {
+			"name": "STIPS FinTech Startup"
+		},
+		"url": "https://stipsoculus.com",
+		"workPeriod": "January 2019 - November 2019",
+		"location": "Russia",
+		"achievements": [
+			"Developed visually appealing and user friendly multilingual platform and company websites on JavaScript, HTML5, CSS3.",
+			"Executed website loading speed optimising, achieving 90%+ performance increase from 20%.",
+			"Conducted application demos for general management of the company."
+		]
+	},
+
+	{
+		"position": "Software Engineer",
+		"company": {
+			"name": "Sberbank (Finance Industry)"
+		},
+		"url": "https://www.sberbank.com",
+		"workPeriod": "December 2019 - May 2021",
+		"location": "Russia",
+		"achievements": [
+			"Demonstrated initiative by single-handedly developing a CRM system for 3000+ employees and designing the database architecture despite limited experience.",
+			"Led effective communication with customers regarding expectations, requirements, gathering feedback, and providing development updates.",
+			"Conducted product demos, showcasing frontend proficiency for effortless user experiences.",
+			"Provided continuous support for the CRM system during testing period, ensuring efficient functionality and intuitive user interfaces."
+		]
+	},
+
+	{
+		"position": "Software Engineer",
+		"company": {
+			"name": "EPAM Systems",
+			"project": "MOEX Project"
+		},
+		"url": "https://www.moex.com",
+		"workPeriod": "July 2021 - June 2022",
+		"location": "Remote",
+		"achievements": [
+			"Developed and optimized React components, implementing efficient frontend logic for smooth user experience.",
+			"Implemented reusable atomic React components, reducing the project's legacy code from 50K+ to around 8K strings.",
+			"Onboarded and mentored new team members, integrating into a project for optimal productivity within 1 week."
+		]
+	},
+
+	{
+		"position": "Software Engineer",
+		"company": {
+			"name": "EPAM Systems",
+			"project": "MRI Viewer (Pilot Project Initiative)",
+			"description": "Open Source 2D/3D viewer developed by EPAM Systems"
+		},
+		"url": "http://epa.ms/mri",
+		"workPeriod": "July 2021 - June 2023 ",
+		"location": "Remote",
+		"achievements": [
+			"Created a web viewer using JavaScript, ReactJs, Redux to enable 2D/3D visualization, supporting DICOM, NIFTI, KTX, HDR formats.",
+			"Optimized UI components and frontend logic, resulting in improved performance and enhanced user experience."
+		]
+	},
+
+	{
+		"position": "Software Engineer",
+		"company": {
+			"name": "EPAM Systems",
+			"project": "BCD Travel Project"
+		},
+		"url": "https://need2know.tripsource.com",
+		"workPeriod": "July 2022 - June 2023",
+		"location": "Remote",
+		"achievements": [
+			"Designed Covid-19 website and mobile app using TypeScript, React.js and React-Native, demonstrating frontend excellence.",
+			"Successfully resolved push notification bug by closely collaborating with Contentful support and rewriting AWS Lambda.",
+			"Achieved performance improvements for instant search result output by refactored search component.",
+			"Covered the Mobile App, Website with unit tests by 89% & by 97%."
+		]
+	}
+]
