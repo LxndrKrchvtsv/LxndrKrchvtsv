@@ -1,0 +1,30 @@
+.contact__wrapper {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    padding: 1rem;
+}
+
+.links__wrapper {
+    height: 78vh;
+    display: flex;
+    flex-direction: column;
+    margin-left: 2rem;
+    justify-content: space-between;
+}
+
+.contact__header {
+    color: #212121;
+    text-transform: uppercase;
+    font-size: 7rem;
+    rotate: 180deg;
+    white-space: nowrap;
+    writing-mode: vertical-rl;
+    line-height: 1;
+    position: relative;
+}
+
+.header__wrapper {
+    overflow: hidden;
+}

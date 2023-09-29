@@ -25,8 +25,10 @@ const Greeting = () => {
 
 	return (
 		<div ref={greetingRef} className={Styles.greeting__wrapper}>
-			<h1 data-text={name}>{name}</h1>
-			<h1 className={Styles.second__string} data-text={experience}>
+			<h1 className={Styles.header} data-text={name}>
+				{name}
+			</h1>
+			<h1 className={`${Styles.second__string} ${Styles.header}`} data-text={experience}>
 				{experience}
 			</h1>
 		</div>

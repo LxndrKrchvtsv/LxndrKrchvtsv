@@ -4,9 +4,7 @@
     line-height: 112px;
 }
 
-h1 {
-    /*color: #7f6c3f #27489c;*/
-    opacity: 0;
+.header {
     font-size: 88px;
     width: fit-content;
     position: relative;

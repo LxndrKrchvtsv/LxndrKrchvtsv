@@ -1,0 +1,18 @@
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 1 20px;
+    height: 400px;
+    margin: 0 5px;
+    background-color: #212121;
+    overflow: hidden;
+    transition: flex 1s cubic-bezier(0.076, 0.86, 0.165, 1);
+}
+
+.img {
+    width: 400px;
+    height: 100%;
+    object-fit: contain;
+    transform: scale(2);
+}

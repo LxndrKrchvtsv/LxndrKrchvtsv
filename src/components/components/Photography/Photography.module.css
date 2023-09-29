@@ -1,0 +1,26 @@
+.photo__wrapper {
+    width: calc(100vw - 16rem);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: fixed;
+    overflow: hidden;
+    left: calc(100% - 32rem);
+    background-color: #fff;
+}
+
+.header {
+    cursor: default;
+    rotate: 180deg;
+    white-space: nowrap;
+    writing-mode: vertical-rl;
+    line-height: 1;
+    font-size: 16rem;
+    text-transform: uppercase;
+    color: #212121;
+    border: 2px solid #212121;
+    height: 100vh;
+    text-align: center;
+    background: repeating-linear-gradient(95deg, #eeeeee91, #ffffff 168px), repeating-linear-gradient(32deg, #eeeeee, #61616180 303px);
+}

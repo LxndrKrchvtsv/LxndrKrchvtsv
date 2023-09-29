@@ -4,11 +4,7 @@ import { useLocation } from 'react-router-dom';
 const CurrentPage = () => {
 	const currentPath = useLocation();
 
-	return (
-		<>
-			<span>{currentPath.pathname}</span>
-		</>
-	);
+	return <div>{currentPath.pathname}</div>;
 };
 
 export default CurrentPage;

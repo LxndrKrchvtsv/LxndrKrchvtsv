@@ -1,4 +1,5 @@
 .main {
     display: flex;
     align-items: flex-end;
+    background: linear-gradient(106deg, #eeeeee 24%, #21212122 10%, #ffffff 49%);
 }

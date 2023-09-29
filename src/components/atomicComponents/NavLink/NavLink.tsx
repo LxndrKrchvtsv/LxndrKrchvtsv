@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const NavLink = ({ name }: TLinks) => {
 	const [linkName, setName] = useState<string>(name);
 
-	const nameSpeedChange = 150;
+	const nameSpeedChange = 80;
 
 	useLayoutEffect(() => {
 		requestAnimationFrame(() => hackerEffectHandler(linkName, setName, nameSpeedChange));

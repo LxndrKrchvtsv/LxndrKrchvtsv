@@ -8,3 +8,4 @@ declare module '*.mp4';
 declare module '*.ovg';
 declare module '*.webm';
 declare module '*.jpg';
+declare module '*.jpeg';

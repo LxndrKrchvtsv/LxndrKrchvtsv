@@ -1,6 +1,6 @@
 import React, { useLayoutEffect, useRef } from 'react';
 import './Navigation.module.css';
-import NavLink from '../../atomicComponents/Link/NavLink';
+import NavLink from '../../atomicComponents/NavLink/NavLink';
 
 import { LINKS } from '../../../utils/constants';
 import { navCtx } from '../../../utils/helpers';

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import Styles from './BackButton.module.css';
 
 const BackButton = () => {
 	const navigate = useNavigate();
@@ -9,9 +10,9 @@ const BackButton = () => {
 	};
 
 	return (
-		<>
-			<span onClick={handleClick}>Back </span>
-		</>
+		<div className={Styles.button} onClick={handleClick}>
+			Back
+		</div>
 	);
 };
 

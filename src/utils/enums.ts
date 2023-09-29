@@ -1,6 +1,11 @@
 export enum ELinks {
-	ABOUT = 'About',
 	EXPERIENCE = 'Experience',
+	ABOUT = 'About',
 	HOBBIES = 'Hobbies',
-	CONNECT_WITH_ME = 'Connect with me',
+	CONTACT = 'Contact',
+}
+
+export enum ELinkType {
+	EMAIL = 'mailTo:',
+	PHONE = 'tel:',
 }

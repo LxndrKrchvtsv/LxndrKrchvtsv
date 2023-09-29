@@ -8,7 +8,7 @@ const PageTransition = ({ children }: TPageTransition) => {
 	return (
 		<>
 			{children}
-			<motion.h3
+			<motion.div
 				layout
 				className={Styles.slide__in}
 				initial={{
@@ -28,10 +28,10 @@ const PageTransition = ({ children }: TPageTransition) => {
 					ease: [1, 0.5, 0.2, 1],
 				}}
 			>
-				{PLEASE_STAND_BY}
-			</motion.h3>
+				<h3 className={Styles.header}>{PLEASE_STAND_BY}</h3>
+			</motion.div>
 
-			<motion.h3
+			<motion.div
 				layout
 				className={Styles.slide__out}
 				initial={{
@@ -52,8 +52,8 @@ const PageTransition = ({ children }: TPageTransition) => {
 					delay: 0.5,
 				}}
 			>
-				{PLEASE_STAND_BY}
-			</motion.h3>
+				<h3 className={Styles.header}>{PLEASE_STAND_BY}</h3>
+			</motion.div>
 		</>
 	);
 };

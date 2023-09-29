@@ -1,4 +1,4 @@
-import { ELinks } from './enums';
+import { ELinks, ELinkType } from './enums';
 import { ReactNode } from 'react';
 
 export type THeader = {
@@ -36,4 +36,15 @@ export type TExperience = {
 	experience: TItemExperience;
 	index: number;
 	length: number;
+};
+
+export type TLink = {
+	link: string;
+	name?: string;
+	typeLink?: ELinkType | string;
+};
+
+export type TGalleryItem = {
+	link: string;
+	alt: string;
 };

@@ -1,8 +1,10 @@
 .back__navigation__wrapper {
     position: fixed;
+    display: flex;
     top: 1rem;
     left: 1.3rem;
-    color: #fff;
+    color: #212121;
     font-size: 3rem;
     text-transform: uppercase;
+    z-index: 100;
 }
