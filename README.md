@@ -1,4 +1,4 @@
-![logo](https://github.com/LxndrKrchvtsv/LxndrKrchvtsv/blob/main/retroBG.jpg)
+![logo](https://github.com/LxndrKrchvtsv/LxndrKrchvtsv/blob/main/1712943883512.jpg)
 <h1 align="center">Hi 👋, I'm Aleksandr Krichevtsov</h1>
 <h3 align="center">A passionate Frontend Engineer while finding joy in the process and embracing beautiful, conceptual design, music creation, photography and more.</h3>
 <img width="500" align="right" src="https://github.com/LxndrKrchvtsv/LxndrKrchvtsv/blob/main/gifCar.gif" alt="car" />
