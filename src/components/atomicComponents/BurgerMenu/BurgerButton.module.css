@@ -1,0 +1,100 @@
+.menu__toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    width: 3rem;
+    height: 3rem;
+    z-index: 100;
+}
+
+.menu__toggle, .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.line {
+    width: 3rem;
+    height: 0.1rem;
+    display: inline-block;
+    position: absolute;
+    transition: all 0.3s ease-in-out;
+    background-color: #212121;
+}
+
+.line:before {
+    content: ' ';
+    width: 1.7rem;
+    height: 0.1rem;
+    position: absolute;
+    transform: translate(1.3rem, 0.7rem);
+    transition: all 0.3s ease-in-out;
+    background-color: #212121;
+}
+
+.btn:hover .line:before {
+    width: 3rem;
+    transition: all 0.3s ease-in-out;
+    transform: translate(0rem, 0.7rem);
+}
+
+.active .line {
+    top: unset;
+    transform: rotate(45deg);
+    background-color: #ffffff;
+}
+
+.active .line:before {
+    top: unset;
+    width: 3rem;
+    transform: rotate(90deg);
+    background-color: #ffffff;
+}
+
+.btn.active:hover .line:before {
+    top: unset;
+    transition: all 0.3s ease-in-out;
+    transform: rotate(90deg);
+    background-color: #ffffff;
+}
+
+@media screen and (max-width: 768px) {
+    .menu__toggle {
+        width: 2rem;
+        height: 2rem;
+        top: 0.5rem;
+    }
+
+    .line {
+        width: 2rem;
+    }
+
+    .line:before {
+        width: 1rem;
+        transform: translate(1rem, 0.5rem);
+    }
+
+    .btn .line:before {
+        width: 1rem;
+        transform: translate(1rem, 0.5rem);
+    }
+
+    .btn.active:hover .line:before, .btn.active .line:before {
+        width: 2rem;
+        transform: rotate(90deg);
+    }
+
+    .btn:hover .line:before {
+        width: 1rem;
+        transform: translate(1rem, 0.5rem);
+    }
+}
+

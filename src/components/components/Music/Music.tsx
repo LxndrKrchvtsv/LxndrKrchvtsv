@@ -4,7 +4,7 @@ import MusicContent from './MusicContent';
 
 const Music = () => {
 	return (
-		<section className={Styles.music__wrapper}>
+		<section className={Styles.wrapper}>
 			<h1 className={Styles.header}>Music</h1>
 			<MusicContent />
 		</section>

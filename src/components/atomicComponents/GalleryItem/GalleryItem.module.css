@@ -2,17 +2,27 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex: 0 1 20px;
+    flex: 0 1 80px;
     height: 400px;
-    margin: 0 5px;
-    background-color: #212121;
+    margin: 0.1rem 0;
     overflow: hidden;
-    transition: flex 1s cubic-bezier(0.076, 0.86, 0.165, 1);
+    transition: all 1s cubic-bezier(0.476, 0.86, 0.565, 1);
+    filter: grayscale(1);
+    border: 1px solid #212121;
+    opacity: 0.9;
+}
+
+.item:hover {
+    opacity: 1;
+    border: 1px solid transparent;
+    filter: grayscale(0);
+    flex: 1 1 80vw;
+    transition: all 1s cubic-bezier(0.476, 0.86, 0.565, 1);
 }
 
 .img {
-    width: 400px;
+    width: 100%;
     height: 100%;
-    object-fit: contain;
-    transform: scale(2);
+    object-fit: cover;
+    transform: scale(1);
 }

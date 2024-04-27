@@ -19,6 +19,13 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: "jetBrains-extra-light-italic";
+    src: url("./assets/fonts/JetBrainsMono/fonts/webfonts/JetBrainsMono-ExtraLightItalic.woff2");
+    font-weight: 100;
+    font-display: swap;
+}
+
 body, html {
     box-sizing: border-box;
     margin: 0;
@@ -38,12 +45,12 @@ h1, h2, h3, h4, h5, h6, p, span {
     margin: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, strong {
     font-family: jetBrains-extra-bold, monospace, sans-serif;
 }
 
 div, p, span {
-    font-family: jetBrains-extra-light, monospace, sans-serif;;
+    font-family: jetBrains-extra-light, monospace, sans-serif;
 }
 
 div {

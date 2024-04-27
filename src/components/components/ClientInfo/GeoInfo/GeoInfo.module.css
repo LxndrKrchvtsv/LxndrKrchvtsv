@@ -1,0 +1,30 @@
+.wrapper {
+    margin-right: 3rem;
+}
+
+.item {
+    position: relative;
+    display: flex;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+}
+
+.item:last-of-type {
+    margin-bottom: 0;
+}
+
+.label {
+    position: relative;
+    margin-right: 0.5rem;
+}
+
+.value {
+    position: relative;
+}
+
+@media screen and (max-width: 425px) {
+    .wrapper {
+        margin-right: 0;
+    }
+}
+

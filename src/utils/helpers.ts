@@ -1,67 +1,32 @@
-import { LETTERS_AND_SYMBOLS } from './constants';
+import { FIRST_VISIT, LOCAL_TRANSITION } from './constants';
 import { gsap } from 'gsap';
 import { RefObject } from 'react';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import ItemExperienceStyles from '../screens/Experience/ItemExperience/ItemExperience.module.css';
-import Styles from '../screens/Experience/ListExperience/ListExperience.module.css';
+import AstroStyles from '../components/components/ClientInfo/AstroInfo/AstroInfo.module.css';
+import GeoInfoStyles from '../components/components/ClientInfo/GeoInfo/GeoInfo.module.css';
+import ClockStyles from '../components/atomicComponents/Clock/Clock.module.css';
+import AboutStyles from '../screens/About/About.module.css';
+import ListExperienceStyles from '../screens/Experience/ListExperience/ListExperience.module.css';
 
-export const hackerEffectHandler = (
-	text: string,
-	setString: (text: string) => void,
-	speed: number,
-) => {
-	let iterations = 0;
-
-	const interval = setTimeout(
-		() =>
-			setInterval(() => {
-				if (text) {
-					setString(
-						text
-							.split('')
-							.map((_letter, index) => {
-								if (index < iterations) return text[index];
-
-								return `${LETTERS_AND_SYMBOLS[Math.floor(Math.random() * 50)]}`;
-							})
-							.join(''),
-					);
-
-					if (iterations >= text.length) clearInterval(interval);
-
-					iterations += 1 / 4;
-				}
-			}, speed),
-		1300,
-	);
+const getAnimationStartDelay = () => {
+	return sessionStorage.getItem(LOCAL_TRANSITION)
+		? 1
+		: sessionStorage.getItem(FIRST_VISIT)
+		? 9.5
+		: 13;
 };
 
-export const navCtx = (navRef: RefObject<HTMLDivElement>) => {
-	return gsap.context(() => {
-		const linkElements = navRef?.current?.querySelectorAll('a');
-		const linkArray = Array.from(linkElements || []);
-
-		linkArray?.map((link, index) => {
-			gsap.to(link, {
-				opacity: 1,
-				top: 0,
-				ease: 'expo.inOut',
-				duration: 3.7,
-				delay: index * 0.2,
-				startAt: {
-					top: 140,
-				},
-			});
-		}, navRef);
-	});
+export const setSessionStorageItemIsNavigationTransition = () => {
+	sessionStorage.setItem(LOCAL_TRANSITION, 'true');
 };
 
 export const contactCtx = (navRef: RefObject<HTMLDivElement>, headerClassName: string) => {
 	return gsap.context(() => {
 		const linkElements = navRef?.current?.querySelectorAll('a');
 		const linkArray = Array.from(linkElements || []);
-
 		const header = gsap.utils.toArray<HTMLElement>(`.${headerClassName}`);
+		const delay = getAnimationStartDelay();
 
 		gsap.fromTo(
 			header,
@@ -74,88 +39,135 @@ export const contactCtx = (navRef: RefObject<HTMLDivElement>, headerClassName: s
 				left: 0,
 				ease: 'expo.inOut',
 				duration: 2,
-				delay: 1,
+				delay: delay,
 			},
 		);
 
-		linkArray?.map((link, index) => {
-			gsap.to(link, {
-				opacity: 1,
-				top: 0,
-				ease: 'expo.inOut',
-				duration: 2,
-				delay: (index + 4) * 0.3,
-				startAt: {
-					top: 140,
+		linkArray?.map((link) => {
+			gsap.fromTo(
+				link,
+				{
 					opacity: 0,
+					top: 140,
 				},
-			});
+				{
+					opacity: 1,
+					top: 0,
+					ease: 'expo.inOut',
+					duration: 2,
+					stagger: {
+						amount: 1,
+					},
+					delay: delay,
+				},
+			);
 		}, navRef);
 	});
 };
 
 export const greetingCtx = (greetingRef: RefObject<HTMLDivElement>) => {
 	return gsap.context(() => {
-		const linkElements = greetingRef?.current?.querySelectorAll('h1');
-		const linkArray = Array.from(linkElements || []);
+		const headersNodes = greetingRef?.current?.querySelectorAll('h1');
+		const delay = getAnimationStartDelay();
 
-		linkArray?.map((link, index) => {
-			gsap.to(link, {
+		headersNodes &&
+			gsap.to(headersNodes, {
 				opacity: 1,
 				top: 0,
 				ease: 'expo.inOut',
 				duration: 2.7,
-				delay: index * 0.2,
+				delay: delay,
+				stagger: {
+					amount: 0.4,
+				},
 				startAt: {
-					top: 140,
+					top: -140,
 				},
 			});
-		}, greetingRef);
-	});
+	}, greetingRef);
 };
 
-export const backNavigationCtx = (navClassName: string) => {
+export const clientInfoCtx = (clientInfoRef: RefObject<HTMLDivElement>) => {
 	return gsap.context(() => {
-		const backNavElement = gsap.utils.toArray<HTMLElement>(`.${navClassName}`);
+		const clientInfoWrapper = clientInfoRef?.current;
+		const clockWrapper = clientInfoRef?.current?.querySelector(`.${ClockStyles.wrapper}`);
+		const geoInfoItems = clientInfoRef?.current?.querySelectorAll(
+			`.${GeoInfoStyles.label}, .${GeoInfoStyles.value}`,
+		);
+		const astroInfoItems = clientInfoRef?.current?.querySelectorAll(
+			`.${AstroStyles.label}, .${AstroStyles.value}`,
+		);
+
+		const delay = getAnimationStartDelay();
 
 		gsap.fromTo(
-			backNavElement,
+			clientInfoWrapper,
 			{
-				opacity: 0,
-				top: '-2rem',
-				ease: 'expo.in',
+				autoAlpha: 0,
 			},
 			{
-				opacity: 1,
-				top: '1rem',
-				ease: 'expo.out',
-				duration: 3,
-				delay: 2.5,
+				ease: 'expo.inOut',
+				duration: 2,
+				delay: delay + 1,
+				autoAlpha: 1,
 			},
 		);
-	});
+
+		clockWrapper &&
+			gsap.fromTo(
+				clockWrapper,
+				{
+					left: -300,
+				},
+				{
+					left: 0,
+					ease: 'expo.inOut',
+					duration: 2,
+					delay: delay + 1.5,
+				},
+			);
+
+		geoInfoItems &&
+			astroInfoItems &&
+			gsap.fromTo(
+				[geoInfoItems, astroInfoItems],
+				{
+					top: -140,
+				},
+				{
+					top: 0,
+					ease: 'expo.inOut',
+					duration: 2,
+					delay: delay + 2,
+					stagger: {
+						amount: 0.4,
+					},
+				},
+			);
+	}, clientInfoRef);
 };
 
 export const listExperienceCtx = (ref: RefObject<HTMLDivElement>): gsap.Context => {
 	return gsap.context(() => {
 		gsap.registerPlugin(ScrollTrigger);
 
+		const delay = getAnimationStartDelay();
 		const elements = gsap.utils.toArray<HTMLElement>(`.${ItemExperienceStyles.item__wrapper}`);
 
 		ScrollTrigger.create({
-			trigger: `.${Styles.list__wrapper}`,
+			trigger: `.${ListExperienceStyles.list__wrapper}`,
 			start: 'top top',
 			end: 'bottom bottom',
 			scrub: 5,
 		});
 
-		const elementsTopPosition = [366, 293, 220, 147, 74];
+		const elementsTopPosition = [36.6, 29.3, 22.0, 14.7, 7.4];
 
 		elements.forEach((element, index) => {
 			let tl = gsap.timeline({
 				scrollTrigger: {
-					trigger: `.${Styles.list__wrapper}`,
-					pin: `${Styles.list__wrapper}`,
+					trigger: `.${ListExperienceStyles.list__wrapper}`,
+					pin: `${ListExperienceStyles.list__wrapper}`,
 					start: () => `top+=${index * window.innerHeight} top`,
 					end: () => `top+=${(index + 2) * window.innerHeight} center`,
 					scrub: 10,
@@ -172,10 +184,10 @@ export const listExperienceCtx = (ref: RefObject<HTMLDivElement>): gsap.Context 
 				},
 				{
 					opacity: 1,
-					top: `calc(100% - ${elementsTopPosition[index]}px)`,
+					top: `calc(100% - ${elementsTopPosition[index]}vh)`,
 					ease: 'expo.out',
 					duration: 2.7,
-					delay: (elements.length - index + 4) * 0.3,
+					delay: delay + (elements.length - index + 2) * 0.3,
 				},
 			);
 
@@ -208,7 +220,9 @@ export const listExperienceCtx = (ref: RefObject<HTMLDivElement>): gsap.Context 
 			);
 		});
 
-		const borderBottom = gsap.utils.toArray<HTMLElement>(`.${Styles.border__bottom}`);
+		const borderBottom = gsap.utils.toArray<HTMLElement>(
+			`.${ListExperienceStyles.border__bottom}`,
+		);
 
 		gsap.fromTo(
 			borderBottom,
@@ -219,8 +233,69 @@ export const listExperienceCtx = (ref: RefObject<HTMLDivElement>): gsap.Context 
 			{
 				opacity: 1,
 				duration: 2.7,
-				delay: 2,
+				delay: delay + 2,
 			},
 		);
+	}, ref);
+};
+
+export const gsapContextAbout = (ref: RefObject<HTMLDivElement>): gsap.Context => {
+	return gsap.context(() => {
+		gsap.registerPlugin(ScrollTrigger);
+		const background = `.${AboutStyles.background}`;
+		const section = `.${AboutStyles.about__wrapper}`;
+		const headerNode = `.${AboutStyles.header}`;
+		const picturesNodes = `.${AboutStyles.pictures}`;
+
+		const header = gsap.utils.toArray<HTMLElement>(headerNode);
+		const pictures = gsap.utils.toArray<HTMLElement>(picturesNodes);
+
+		const delay = getAnimationStartDelay();
+
+		gsap.fromTo(
+			header,
+			{
+				opacity: 0,
+				left: '-2rem',
+				ease: 'expo.in',
+			},
+			{
+				opacity: 1,
+				left: '1rem',
+				ease: 'expo.out',
+				duration: 3,
+				delay: delay + 1,
+			},
+		);
+
+		gsap.fromTo(
+			pictures,
+			{
+				opacity: 0,
+				ease: 'expo.in',
+			},
+			{
+				opacity: 1,
+				ease: 'expo.out',
+				duration: 3,
+				delay: delay + 1.5,
+			},
+		);
+
+		gsap.to(background, {
+			scrollTrigger: {
+				trigger: section,
+				start: 'top top',
+				end: 'bottom top',
+				scrub: true,
+				onUpdate: (self) => {
+					const blurValue = self.progress * 10;
+
+					gsap.to(background, {
+						filter: `blur(${blurValue}px)`,
+					});
+				},
+			},
+		});
 	}, ref);
 };

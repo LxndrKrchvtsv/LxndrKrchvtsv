@@ -13,79 +13,90 @@ const Hobbies = () => {
 	useLayoutEffect(() => {
 		const ctx = gsap.context(() => {
 			gsap.registerPlugin(ScrollTrigger);
+			const container = containerRef.current;
+			const getScrollAmount = (headerWith: number, index: number) => {
+				const windowInnerWidth = window.innerWidth;
+				return -(windowInnerWidth! - headerWith * (2 - index)) + 'px';
+			};
+
 			const elements = gsap.utils.toArray<HTMLElement>(
-				`.${MusicStyle.music__wrapper}, .${PhotographyStyle.photo__wrapper}`,
+				`.${MusicStyle.wrapper}, .${PhotographyStyle.wrapper}`,
 			);
 
-			ScrollTrigger.create({
-				trigger: `.${Styles.hobbies__wrapper}`,
-				start: 'top top',
-				end: 'bottom bottom',
-				scrub: 5,
+			let tl = gsap.timeline({
+				scrollTrigger: {
+					trigger: container,
+					pin: `.${Styles.hobbies__wrapper}`,
+					start: () => `top+=${window.innerWidth} bottom`,
+					end: () => `top+=${4 * window.innerWidth} bottom`,
+					markers: true,
+					scrub: 1,
+					invalidateOnRefresh: true,
+				},
+				yoyo: true,
+				smoothChildTiming: true,
 			});
 
-			const elementsTopPosition = [32, 16];
-
 			elements.forEach((element, index) => {
-				let tl = gsap.timeline({
-					scrollTrigger: {
-						trigger: `.${Styles.hobbies__wrapper}`,
-						pin: `.${Styles.hobbies__wrapper}`,
-						start: () => `top+=${index * window.innerWidth} top`,
-						end: () => `top+=${(index + 2) * window.innerWidth} center`,
-						scrub: 1,
-					},
-					smoothChildTiming: true,
-				});
+				const header = element.childNodes[0] as HTMLElement;
+				const headerOffsetWidth = header.offsetWidth;
 
 				gsap.fromTo(
 					element,
 					{
 						opacity: 0,
-						left: '100vw',
+						left: '100%',
 						ease: 'expo.in',
 					},
 					{
 						opacity: 1,
-						left: `calc(100% - ${elementsTopPosition[index]}rem)`,
+						left: `calc(100% - ${headerOffsetWidth * (2 - index)}px)`,
 						ease: 'expo.out',
 						duration: 2.7,
 						delay: (elements.length - index + 4) * 0.3,
 					},
 				);
 
-				tl.fromTo(
+				tl.to(element, {
+					x: () => getScrollAmount(headerOffsetWidth, index),
+					duration: 25,
+					ease: 'expo.inOut',
+				}).to(
 					element,
 					{
-						ease: 'expo.in',
-						duration: 25,
-					},
-					{
-						x: `-70vw`,
+						x: () => getScrollAmount(headerOffsetWidth, index),
 						duration: 25,
 						ease: 'expo.inOut',
 					},
-				).to(element, { x: `-70vw`, duration: 25, ease: 'expo.inOut' }, '+=1');
-
-				tl.fromTo(
-					element.childNodes[1].childNodes,
-					{
-						opacity: 0,
-						duration: 2.5,
-						ease: 'expo.in',
-					},
-					{
-						opacity: 1,
-						duration: 5,
-						ease: 'expo.inOut',
-						scrollTrigger: {
-							trigger: element,
-							containerAnimation: tl,
-							start: 'top 87%',
-						},
-						smoothChildTiming: true,
-					},
+					'+=1',
 				);
+
+				tl.to(element.childNodes[1].childNodes, {
+					opacity: 1,
+					duration: 10,
+					ease: 'expo.in',
+					smoothChildTiming: true,
+					scrollTrigger: {
+						trigger: element,
+						start: () => `top 95%`,
+						// end: () => `bottom 90%`,
+						containerAnimation: tl,
+						scrub: 1,
+						invalidateOnRefresh: true,
+						markers: {
+							startColor: 'purple',
+							endColor: 'blue',
+							fontSize: '24px',
+							fontWeight: 'bold',
+							indent: 20,
+						},
+					},
+				}).to(element.childNodes[1].childNodes, {
+					opacity: 1,
+					duration: 10,
+					ease: 'expo.out',
+					onComplete: () => console.log(element.childNodes[1].childNodes[0]),
+				});
 			});
 		}, containerRef);
 

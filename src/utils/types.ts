@@ -1,4 +1,4 @@
-import { ELinks, ELinkType } from './enums';
+import { ELinkType } from './enums';
 import { ReactNode } from 'react';
 
 export type THeader = {
@@ -13,8 +13,15 @@ export type TPageTransition = {
 	children: ReactNode[] | ReactNode;
 };
 
-export type TLinks = {
-	name: ELinks;
+export interface NavLinkProps {
+	handleNavItemClick?: () => void;
+	link: TLinks;
+	key: string;
+}
+
+type TLinks = {
+	name: string;
+	value: string;
 };
 
 type TCompany = {

@@ -1,4 +1,4 @@
-.music__wrapper {
+.wrapper {
     width: calc(100vw - 16rem);
     height: 100vh;
     display: flex;
@@ -23,7 +23,8 @@
     border-bottom: none;
     height: 100vh;
     text-align: center;
-    background: repeating-linear-gradient(221deg, #eeeeee91, #ffffff 202px), repeating-linear-gradient(153deg, #eeeeee, #61616180 282px);
+    background: white;
+    /*background: repeating-linear-gradient(221deg, #eeeeee91, #ffffff 202px), repeating-linear-gradient(153deg, #eeeeee, #61616180 282px);*/
 }
 
 .music__content {
@@ -40,6 +41,7 @@
 .article {
     margin-bottom: 3rem;
     font-size: 1.3rem;
+    opacity: 0;
 }
 
 .paragraph {

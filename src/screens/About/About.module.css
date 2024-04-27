@@ -3,6 +3,7 @@
     height: 100%;
     color: #212121;
     padding: 7rem;
+    box-sizing: border-box;
 }
 
 .background {
@@ -26,13 +27,13 @@
     line-height: 1;
     font-size: 2rem;
     position: fixed;
-    left: 1.3rem;
+    left: 1rem;
     top: 7.4rem;
     text-transform: uppercase;
 }
 
 .paragraph, .pictures {
-    font-size: 3rem;
+    font-size: 2vw;
     margin-top: 2rem;
 }
 
@@ -64,4 +65,53 @@
 
 .goals, .paragraph strong {
     color: #424242;
+}
+
+@media screen and (max-width: 1024px) {
+    .paragraph, .pictures {
+        font-size: 3vw;
+    }
+}
+
+@media screen and (max-width: 880px) {
+    .paragraph, .pictures {
+        font-size: 3vw;
+    }
+
+    .pictures img {
+        width: 80vw;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .paragraph, .pictures {
+        text-align: justify;
+        font-size: 5vw;
+    }
+
+    .about__wrapper {
+        padding: 6rem 4vw 8vw 16vw;
+    }
+
+    .header {
+        font-size: 4vw;
+        top: 6rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .about__wrapper {
+        padding: 4rem 4vw 8vw 16vw;
+    }
+
+    .header {
+        top: 4rem;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .article {
+        margin-top: 4rem;
+    }
 }

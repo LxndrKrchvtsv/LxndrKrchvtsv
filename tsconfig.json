@@ -1,4 +1,5 @@
 {
+  "compileOnSave": true,
   "compilerOptions": {
     "module": "commonjs", //Specify module code generation
     "target": "es5",
@@ -18,7 +19,7 @@
     "noUnusedParameters": true, // Report errors on unused parameters
     "incremental": true, // Enable incremental compilation by reading/writing information from prior compilations to a file on disk
     "noFallthroughCasesInSwitch": true // Report errors for fallthrough cases in switch statement
-},
+  },
   "exclude": ["node_modules", "build"],
   "include": ["src/**/*", "tests/**/*"],
 }

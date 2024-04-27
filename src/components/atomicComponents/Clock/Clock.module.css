@@ -1,0 +1,10 @@
+.wrapper {
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+@media screen and (max-width: 425px) {
+    .wrapper {
+        text-align: center;
+    }
+}

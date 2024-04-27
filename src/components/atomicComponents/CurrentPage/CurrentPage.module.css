@@ -1,0 +1,16 @@
+.current__path {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    font-size: 3rem;
+    text-transform: uppercase;
+    color: #212121;
+    z-index: 99;
+}
+
+@media screen and (max-width: 786px) {
+    .current__path {
+        font-size: 6vw;
+    }
+}
+

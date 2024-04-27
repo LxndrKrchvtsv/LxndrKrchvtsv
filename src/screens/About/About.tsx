@@ -2,72 +2,15 @@ import React, { useLayoutEffect, useRef } from 'react';
 import Styles from './About.module.css';
 import meWithFather from '../../assets/images/me_and_father.jpeg';
 import meNow from '../../assets/images/me_now.jpg';
-import { gsap } from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
+import { gsapContextAbout } from '../../utils/helpers';
 
 const About = () => {
 	const aboutRef = useRef(null);
 
 	useLayoutEffect(() => {
-		const ctx = gsap.context(() => {
-			const background = `.${Styles.background}`;
-			const section = `.${Styles.about__wrapper}`;
-			const headerNode = `.${Styles.header}`;
-			const picturesNodes = `.${Styles.pictures}`;
+		const context = gsapContextAbout(aboutRef);
 
-			const header = gsap.utils.toArray<HTMLElement>(headerNode);
-			const pictures = gsap.utils.toArray<HTMLElement>(picturesNodes);
-
-			gsap.fromTo(
-				header,
-				{
-					opacity: 0,
-					left: '-2rem',
-					ease: 'expo.in',
-				},
-				{
-					opacity: 1,
-					left: '1.3rem',
-					ease: 'expo.out',
-					duration: 3,
-					delay: 3,
-				},
-			);
-
-			gsap.fromTo(
-				pictures,
-				{
-					opacity: 0,
-					ease: 'expo.in',
-				},
-				{
-					opacity: 1,
-					ease: 'expo.out',
-					duration: 3,
-					delay: 3.5,
-				},
-			);
-
-			gsap.registerPlugin(ScrollTrigger);
-
-			gsap.to(background, {
-				scrollTrigger: {
-					trigger: section,
-					start: 'top top',
-					end: 'bottom top',
-					scrub: true,
-					onUpdate: (self) => {
-						const blurValue = self.progress * 20;
-
-						gsap.to(background, {
-							filter: `blur(${blurValue}px)`,
-						});
-					},
-				},
-			});
-		}, aboutRef);
-
-		return () => ctx.revert();
+		return () => context.revert();
 	}, []);
 
 	return (
@@ -79,14 +22,14 @@ const About = () => {
 
 				<article className={Styles.article}>
 					<figure className={Styles.pictures}>
-						Here I am at around 6 years old.
-						<img src={meWithFather} alt='I and my Father' />
 						<figcaption>
-							This is me with my <strong>Father</strong> (blessed memory)
+							On this photo with my <strong>Father</strong> (blessed memory) I am six
+							y.o.
 						</figcaption>
+						<img src={meWithFather} alt='I and my Father' />
 					</figure>
 					<figure className={Styles.pictures}>
-						Of course, I've grown a bit older now,
+						<figcaption>Of course, I've grown a bit older now,</figcaption>
 						<img src={meNow} alt='Me now' />
 						<figcaption>and I look something like this</figcaption>
 					</figure>
@@ -128,13 +71,12 @@ const About = () => {
 
 					<p className={Styles.paragraph}>
 						In 2017, I stumbled upon a website of a freelancer, developed using{' '}
-						<strong>React.</strong>
-						That's when I understood that this is what I needed. However, my{' '}
-						<strong>JavaScript</strong>
-						skills were not strong then, and I needed to start from the basics. Slowly
-						but surely, I acquired the skills, and now I masterfully wield the tools to
-						bring my fantasies to life. The journey was challenging, but against the
-						doubts of those around me, I succeeded and proved to myself that{' '}
+						<strong>React.</strong>&#32; That's when I understood that this is what I
+						needed. However, my <strong>JavaScript</strong>&#32; skills were not strong
+						then, and I needed to start from the basics. Slowly but surely, I acquired
+						the skills, and now I masterfully wield the tools to bring my fantasies to
+						life. The journey was challenging, but against the doubts of those around
+						me, I succeeded and proved to myself that{' '}
 						<strong>nothing is impossible.</strong> :)
 					</p>
 				</article>
@@ -144,11 +86,11 @@ const About = () => {
 						<h2 className={Styles.goals}>What are my current goals?</h2>
 						To complete my bachelor's degree, enroll in and complete a master's program,
 						establish my own company/startup – anything that brings value to society and
-						our planet (yes, I'm brainstorming ideas,
+						our planet (yes, I'm brainstorming ideas,&#32;
 						<strong>
 							if you have something, do reach out, I'd be thrilled to discuss!
 						</strong>
-						). To immigrate to a country where I'd like to settle down and start a
+						&#32;To immigrate to a country where I'd like to settle down and start a
 						family. Previously, I was thinking that Canada is my country, but now I'm
 						uncertain and searching for my place.
 					</p>

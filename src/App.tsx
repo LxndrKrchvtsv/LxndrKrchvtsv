@@ -1,83 +1,80 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from './views/Header/Header';
 import Greeting from './screens/Greeting/Greeting';
-import Navigation from './components/components/Navigation/Navigation';
 import Styles from './App.module.css';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import Main from './views/Main/Main';
 import ListExperience from './screens/Experience/ListExperience/ListExperience';
-import BackNavigation from './components/components/BackNavigation/BackNavigation';
-import { AnimatePresence } from 'framer-motion';
-// import PageTransition from './components/components/PageTransition/PageTransition';
 import Contact from './screens/Contact/Contact';
 import About from './screens/About/About';
 import Hobbies from './screens/Hobbies/Hobbies';
+import ClientInfo from './components/components/ClientInfo/ClientInfo';
+import Navigation from './components/components/Navigation/Navigation';
+import SiteLoader from './components/components/SiteLoader/SiteLoader';
+import { FIRST_VISIT } from './utils/constants';
+import { Paths } from './utils/enums';
+import CurrentPage from './components/atomicComponents/CurrentPage/CurrentPage';
 
 const App = () => {
 	const location = useLocation();
 
+	useEffect(() => {
+		sessionStorage.setItem(FIRST_VISIT, 'true');
+	}, []);
+
 	return (
 		<div className={Styles.app}>
-			<AnimatePresence mode={'wait'}>
+			<SiteLoader>
+				<Navigation />
 				<Routes location={location} key={location.pathname}>
 					<Route
 						index
-						path='/'
+						path={Paths.HOME}
 						element={
-							// <PageTransition>
 							<Header>
 								<Greeting />
-								<Navigation />
+								<ClientInfo />
 							</Header>
-							// </PageTransition>
 						}
 					/>
 					<Route
-						path='/experience'
+						path={Paths.EXPERIENCE}
 						element={
-							// <PageTransition>
 							<Main>
+								<CurrentPage />
 								<ListExperience />
-								<BackNavigation />
 							</Main>
-							// </PageTransition>
 						}
 					/>
 					<Route
-						path='/about'
+						path={Paths.ABOUT}
 						element={
-							// <PageTransition>
 							<Main>
+								<CurrentPage />
 								<About />
-								<BackNavigation />
 							</Main>
-							// </PageTransition>
 						}
 					/>
 					<Route
-						path='/hobbies'
+						path={Paths.HOBBIES}
 						element={
-							// <PageTransition>
 							<Main>
+								<CurrentPage />
 								<Hobbies />
-								<BackNavigation />
 							</Main>
-							// </PageTransition>
 						}
 					/>
 					<Route
-						path='/contact'
+						path={Paths.CONTACT}
 						element={
-							// <PageTransition>
 							<Main>
+								<CurrentPage />
 								<Contact />
-								<BackNavigation />
 							</Main>
-							// </PageTransition>
 						}
 					/>
 				</Routes>
-			</AnimatePresence>
+			</SiteLoader>
 		</div>
 	);
 };

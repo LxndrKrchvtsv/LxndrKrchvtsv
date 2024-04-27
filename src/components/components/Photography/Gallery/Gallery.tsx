@@ -16,19 +16,24 @@ const Gallery = () => {
 		const galleryItems = Array.from(gallery?.children as HTMLCollectionOf<IHoveredElement>);
 		const indicator = galleryWrapper?.querySelector<HTMLDivElement>(`.${Styles.indicator}`);
 
-		const defaultItemFlex = '0 1 20px';
-		const hoverItemFlex = '1 1 400px';
+		const defaultItemFlex = '0 1 80px';
+		const hoverItemFlex = '1 1 80vw';
+		const defaultGrayScale = 'grayscale(1)';
+		const hoverGrayScale = 'grayscale(0)';
 
 		const updateGalleryItems = () => {
 			if (galleryItems) {
 				galleryItems.forEach((item) => {
 					let flex = defaultItemFlex;
+					let gray = defaultGrayScale;
 
 					if (item.isHovered) {
 						flex = hoverItemFlex;
+						gray = hoverGrayScale;
 					}
 
 					item.style.flex = flex;
+					item.style.filter = gray;
 				});
 			}
 		};
@@ -37,22 +42,34 @@ const Gallery = () => {
 
 		updateGalleryItems();
 
-		galleryItems.forEach((item) => {
-			item.addEventListener('mouseenter', () => {
-				galleryItems.forEach((anotherItem) => {
-					anotherItem.isHovered = anotherItem === item;
-				});
-				updateGalleryItems();
+		const mouseEnterHandler = (item: HTMLElement) => () => {
+			galleryItems.forEach((anotherItem) => {
+				anotherItem.isHovered = anotherItem === item;
 			});
+			updateGalleryItems();
+		};
+
+		const mouseMoveEventHandler = (e: MouseEvent) => {
+			if (indicator?.style) {
+				indicator.style.top = `${
+					galleryWrapper && e.clientY - galleryWrapper.getBoundingClientRect().top
+				}px`;
+			}
+		};
+
+		galleryItems.forEach((item) => {
+			item.addEventListener('mouseenter', mouseEnterHandler(item));
 		});
 
-		galleryWrapper?.addEventListener('mousemove', (e) => {
-			if (indicator?.style.left) {
-				indicator.style.left = `${
-					e.clientX - galleryWrapper?.getBoundingClientRect().left
-				}`;
-			}
-		});
+		galleryWrapper?.addEventListener('mousemove', mouseMoveEventHandler);
+
+		return () => {
+			galleryItems.forEach((item) => {
+				item.removeEventListener('mouseenter', mouseEnterHandler(item));
+			});
+
+			galleryWrapper?.removeEventListener('mousemove', mouseMoveEventHandler);
+		};
 	}, []);
 
 	return (

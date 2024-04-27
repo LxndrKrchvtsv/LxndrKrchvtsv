@@ -1,6 +1,10 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const dotenv = require('dotenv');
+const webpack = require('webpack');
+
+dotenv.config();
 
 module.exports = {
 	entry: './src/index.tsx',
@@ -9,6 +13,9 @@ module.exports = {
 		path: path.resolve(__dirname, 'build'),
 	},
 	plugins: [
+		new webpack.DefinePlugin({
+			'process.env': JSON.stringify(process.env),
+		}),
 		new HtmlWebpackPlugin({
 			template: path.join(__dirname, 'public', 'index.html'),
 			favicon: path.join(__dirname, 'public', 'favicon.ico'),
@@ -42,6 +49,7 @@ module.exports = {
 			{
 				test: /\.(ts|tsx)$/,
 				loader: 'ts-loader',
+				exclude: /node_modules/,
 			},
 			{
 				test: /\.(sa|sc|c)ss$/,
