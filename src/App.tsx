@@ -12,7 +12,7 @@ import ClientInfo from './components/components/ClientInfo/ClientInfo';
 import Navigation from './components/components/Navigation/Navigation';
 import SiteLoader from './components/components/SiteLoader/SiteLoader';
 import { FIRST_VISIT } from './utils/constants';
-import { Paths } from './utils/enums';
+import { EPaths } from './utils/enums';
 import CurrentPage from './components/atomicComponents/CurrentPage/CurrentPage';
 
 const App = () => {
@@ -29,7 +29,7 @@ const App = () => {
 				<Routes location={location} key={location.pathname}>
 					<Route
 						index
-						path={Paths.HOME}
+						path={EPaths.HOME}
 						element={
 							<Header>
 								<Greeting />
@@ -38,7 +38,7 @@ const App = () => {
 						}
 					/>
 					<Route
-						path={Paths.EXPERIENCE}
+						path={EPaths.EXPERIENCE}
 						element={
 							<Main>
 								<CurrentPage />
@@ -47,7 +47,7 @@ const App = () => {
 						}
 					/>
 					<Route
-						path={Paths.ABOUT}
+						path={EPaths.ABOUT}
 						element={
 							<Main>
 								<CurrentPage />
@@ -56,7 +56,7 @@ const App = () => {
 						}
 					/>
 					<Route
-						path={Paths.HOBBIES}
+						path={EPaths.HOBBIES}
 						element={
 							<Main>
 								<CurrentPage />
@@ -65,7 +65,7 @@ const App = () => {
 						}
 					/>
 					<Route
-						path={Paths.CONTACT}
+						path={EPaths.CONTACT}
 						element={
 							<Main>
 								<CurrentPage />

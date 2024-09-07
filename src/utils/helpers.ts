@@ -5,7 +5,7 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 import ItemExperienceStyles from '../screens/Experience/ItemExperience/ItemExperience.module.css';
 import AstroStyles from '../components/components/ClientInfo/AstroInfo/AstroInfo.module.css';
 import GeoInfoStyles from '../components/components/ClientInfo/GeoInfo/GeoInfo.module.css';
-import ClockStyles from '../components/atomicComponents/Clock/Clock.module.css';
+import ClockStyles from '../Pages/Home/entities/UserGeographicalDetails/components/Clock/Clock.module.css';
 import AboutStyles from '../screens/About/About.module.css';
 import ListExperienceStyles from '../screens/Experience/ListExperience/ListExperience.module.css';
 

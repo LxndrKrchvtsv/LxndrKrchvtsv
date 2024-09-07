@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Styles from './Clock.module.css';
 
-const Clock = () => {
+const Index = () => {
 	const [currentTime, setCurrentTime] = useState<string | null>(null);
 
 	useEffect(() => {
@@ -15,4 +15,4 @@ const Clock = () => {
 	return <div className={Styles.wrapper}>Current Time: {currentTime}</div>;
 };
 
-export default Clock;
+export default Index;

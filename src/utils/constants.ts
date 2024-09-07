@@ -43,17 +43,4 @@ export const IMAGES_MAP = [
 	{ link: '/images/galleryItems/sunrise.jpg', alt: 'sunrise' },
 ];
 
-export const CITY = 'City =>';
-export const COUNTRY = 'Country =>';
-export const PROVINCE = 'Province =>';
-export const LATITUDE = 'Latitude =>';
-export const LONGITUDE = 'Longitude =>';
-export const DATE = 'Date =>';
-export const TIME_ZONE = 'Time Zone =>';
-
-export const DAY_LENGTH = 'Day length =>';
-export const SUNSET = 'Sunset =>';
-export const SUNRISE = 'Sunrise =>';
-export const MOONSET = 'Moonset =>';
-export const MOONRISE = 'Moonrise =>';
-export const SOLAR_NOON = 'Solar noon =>';
+export const ARROW_RIGHT = '=>'

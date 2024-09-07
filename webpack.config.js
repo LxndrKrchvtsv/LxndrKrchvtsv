@@ -6,6 +6,13 @@ const webpack = require('webpack');
 
 dotenv.config();
 
+const envConfig = dotenv.config().parsed;
+
+const clientEnvKeys = Object.keys(envConfig).reduce((prev, next) => {
+	prev[`process.env.${next}`] = JSON.stringify(envConfig[next]);
+	return prev;
+}, {});
+
 module.exports = {
 	entry: './src/index.tsx',
 	output: {
@@ -13,9 +20,7 @@ module.exports = {
 		path: path.resolve(__dirname, 'build'),
 	},
 	plugins: [
-		new webpack.DefinePlugin({
-			'process.env': JSON.stringify(process.env),
-		}),
+		new webpack.DefinePlugin(clientEnvKeys),
 		new HtmlWebpackPlugin({
 			template: path.join(__dirname, 'public', 'index.html'),
 			favicon: path.join(__dirname, 'public', 'favicon.ico'),
